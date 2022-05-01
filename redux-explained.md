@@ -488,7 +488,7 @@ const store = createStore(reducer);
   <App />
 </Provider>
 ```
-In the nutshell this the implementation of the react-redux hooks. Error handling and most importantly memorisation is missing here.
+In the nutshell this the implementation of the react-redux hooks. Error handling and most importantly memoization is missing here.
 The base idea is kind of straight forward and does not need an explanation.
 
 The connect function:
@@ -497,7 +497,7 @@ const connect = (mapState, mapDispatch) => {
   return (Component) => {
     return (props) => {
       const store = useStore(); 
-      // memorization and batching is missing here!
+      // memoization and batching is missing here!
       const mappedState = mapState(store.getState());
       const mappedDispatch = mapDispatch(store.dispatch);
       
