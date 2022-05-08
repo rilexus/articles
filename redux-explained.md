@@ -1,11 +1,10 @@
 # Redux Explained
 
-## Intro
 During my conversations with junior- to mid level frontend developers, especially react developers, redux is brought up as a topic of discussion. How could it not, since redux and react where seen together in pair for a long time. Still, even today if you hear redux, you will probably think react. I do!
 During this conversations redux is being treated like a magic monster that you are not supposed to upset. Every part of it is treated like a magic thing. With complex and dark rules. The knowledge about those parts are only known to the selected and chosen people. The one who knows how to bend those parts to his will, is treated with respect among junior- and mid developers.
 I would like to break this magic and trivialize this monster so no developer should be afraid of it.
 
-## Part One: Subscription
+## Subscription
 You can trigger rerender of a react component from the outside of the component.
 Take a look at this code snippet:  
 ```jsx
@@ -69,7 +68,7 @@ function App() {
 ```
 This way an unlimited amount of components can subscribe to our logic and be notified about an update.
 
-## Part Two: actions
+## Actions
 The setInterval brings the point across, but its kind of useless. Let's make it a little more useful. Instead of incrementing the
 value through timeout, let's increment it as we desire:
 ```jsx
@@ -225,7 +224,7 @@ function App() {
 Now by calling the dispatch function and providing more cases in the reducer function we do not have to think about
 the setState function. I think that's one of the magic things.
 
-## Part Three: initial state
+## Initial State
 At this point it would be nice to be able to work with a more complicated state than a number.
 See the defaultState in the reducer, state = undefined and the initial call of the dispatch function.
 ```jsx
@@ -295,7 +294,7 @@ function App() {
 By calling dispatch once initially, state of type undefined will be passed to the reducer, and it will default to the passed
 default state. And notify all listeners about the new state resulting in one initial rerender.
 
-## Part Four: createStore
+## CreateStore
 Not to keep all the function hanging in the global scope, lets wrap it in to a function: "createStore"
 ```jsx
 import { useEffect } from "react";
@@ -377,7 +376,7 @@ Depending on the project size, the user would probably never see and know about 
 function. He would from time to time write some new cases in the reducer, which is in its own file, separated from 
 everything else and that's about it. This fact adds more mystery to the magic. But as you can see its really simple.
 
-## Part Five: utils
+## Utils
 Couple things are still missing though. For example the combineReducers function:
 ```js
 function combineReducers(reducersMap /* {[reducerKey: string], reducerFunction: (state, action) => state} */){
@@ -412,7 +411,7 @@ const store = createStore(rootReducer);
 ```
 There are more helper functions like this. I will not go in to all of them.
 
-## Part Six: enhancer
+## Enhancer
 So far there is one more thing missing. It's the enhancer function with is passed optional and is passed as the second argument
 to the createStore function:
 ```js
@@ -453,7 +452,7 @@ This is the basic idea of redux. A lot of the original implementation contains e
 Otherwise, it's much harder to understand what is happening.
 
 
-## Part Seven: react-redux
+## react-redux
 Although I have started with a react component, redux has nothing to do with react.
 I can't emphasise this point hard enough. Some developers fight me hard on this. You can use redux everywhere you see fit.
 Its just that redux got popular with react. Now a lot of developers associate redux with react only.
